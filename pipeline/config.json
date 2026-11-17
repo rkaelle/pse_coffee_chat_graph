@@ -1,0 +1,11 @@
+{
+  "data_dir": "../../work",
+  "roster_xlsx": "roster.xlsx",
+  "classes": [
+    {"name": "Chi", "semester": "F25", "cohort": "Chi '25"},
+    {"name": "Psi", "semester": "W26", "cohort": "Psi '26"},
+    {"name": "Omega", "semester": "F26", "cohort": "Omega '26"}
+  ],
+  "older_cohorts": {"Sigma '23": "F23", "Tau '24": "W24", "Upsilon '24": "F24", "Phi '25": "W25"},
+  "out_of_scope_semesters": ["W20", "F20", "W21", "F21"]
+}

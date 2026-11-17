@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Who Coffee Chats Whom | PSE UofM</title>
+  <meta name="description" content="An interactive map of 2,301 coffee chats among 166 members of Pi Sigma Epsilon at the University of Michigan.">
+  <meta name="theme-color" content="#15100c">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PSE UofM">
+  <meta property="og:url" content="https://www.psechats.coffee/">
+  <meta property="og:title" content="Who coffee chats whom">
+  <meta property="og:description" content="An interactive map of 2,301 coffee chats among 166 members of Pi Sigma Epsilon at the University of Michigan.">
+  <meta property="og:image" content="https://www.psechats.coffee/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A glowing network of coffee chats between PSE members, with the title Who coffee chats whom.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Who coffee chats whom">
+  <meta name="twitter:description" content="An interactive map of 2,301 coffee chats among 166 members of PSE at the University of Michigan.">
+  <meta name="twitter:image" content="https://www.psechats.coffee/og.png">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="graph" aria-label="Network of coffee chats. Each dot is a member and each line is a chat between a new member and a brother."></canvas>
+
+  <header class="masthead">
+    <h1>Who coffee chats whom</h1>
+    <p id="status" aria-live="polite">Loading the chats…</p>
+  </header>
+
+  <div class="search">
+    <label for="search" class="sr">Find a member</label>
+    <input id="search" type="search" placeholder="Find a member" list="names" autocomplete="off">
+    <datalist id="names"></datalist>
+  </div>
+
+  <aside id="panel" class="panel"></aside>
+
+  <section class="dock">
+    <div class="keys">
+      <button class="key on" data-cls="Chi" aria-pressed="true"><i></i>Chi</button>
+      <button class="key on" data-cls="Psi" aria-pressed="true"><i></i>Psi</button>
+      <button class="key on" data-cls="Omega" aria-pressed="true"><i></i>Omega</button>
+      <span class="key static"><i class="brother"></i>Older brothers</span>
+      <span class="key static"><i class="grad"></i>Graduated</span>
+      <span class="spacer"></span>
+      <button class="text-btn" id="labels" aria-pressed="false">Show all names</button>
+      <button class="text-btn" id="about-btn">How this was built</button>
+    </div>
+    <div class="timeline">
+      <button id="play" class="play" aria-label="Replay the chats">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path id="play-icon" d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      </button>
+      <div class="track">
+        <canvas id="spark" aria-hidden="true"></canvas>
+        <input id="day" type="range" min="0" max="1" value="1" step="1" aria-label="Date">
+        <div id="segments" class="segments"></div>
+      </div>
+    </div>
+  </section>
+
+  <dialog id="about">
+    <h2>How this was built</h2>
+    <p>After every coffee chat at PSE UofM, the new member sends the brother a thank-you email and copies the Professional Development inbox. This map rebuilds all 2,301 of those emails from Chi, Psi and Omega: each dot is a person and each line is a chat.</p>
+    <p>Only names, pledge classes, years and chat dates are shown. No email addresses or email contents are published.</p>
+    <ul>
+      <li>Workshops, panels, recruiter emails, apologies and duplicates are removed.</li>
+      <li>People are matched by email address across nicknames.</li>
+      <li>Chats with the 45 seniors who have since graduated are kept.</li>
+      <li>Exchange students are left out. Omega runs through November 7, 2026.</li>
+      <li>The months between pledge classes are skipped on the timeline.</li>
+    </ul>
+    <p class="quiet">A chat without a thank-you email doesn't appear here, so a quiet dot can mean missing paperwork rather than a missing chat.</p>
+    <form method="dialog"><button class="text-btn">Close</button></form>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="app.js"></script>
+</body>
+</html>
